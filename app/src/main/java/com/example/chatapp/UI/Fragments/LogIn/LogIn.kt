@@ -4,12 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.chatapp.Models.ChatUser
 import com.example.chatapp.R
 import com.example.chatapp.databinding.FragmentChannelBinding
 import com.example.chatapp.databinding.FragmentLogInBinding
+import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputLayout
 
 class LogIn : Fragment() {
@@ -39,6 +41,8 @@ class LogIn : Fragment() {
         if (validateInput(name) && validateInput(userName)){
             val action = LogInDirections.actionLogInToChannel(chatUser)
             findNavController().navigate(action)
+        } else {
+           Toast.makeText(requireContext(), "Please Provides All Credential!", Toast.LENGTH_SHORT).show()
         }
     }
     private fun validateInput(inputText: String): Boolean{

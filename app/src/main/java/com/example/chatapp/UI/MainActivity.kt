@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
 import com.example.chatapp.Models.ChatUser
 import com.example.chatapp.R
 import com.example.chatapp.UI.Fragments.LogIn.LogInDirections
@@ -23,7 +24,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
-        navController = findNavController(R.id.fragmentContainerView)
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
+        navController = navHostFragment.navController
 
         if (navController.currentDestination?.label.toString().contains("log_in")) {
             val currentUser = client.getCurrentUser()
