@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav_host"
+    app:startDestination="@id/logIn">
+
+    <fragment
+        android:id="@+id/logIn"
+        android:name="com.example.chatapp.UI.Fragments.LogIn.LogIn"
+        android:label="fragment_log_in"
+        tools:layout="@layout/fragment_log_in" >
+        <action
+            android:id="@+id/action_logIn_to_channel"
+            app:destination="@id/channel"
+            app:popUpTo="@id/logIn" />
+    </fragment>
+    <fragment
+        android:id="@+id/channel"
+        android:name="com.example.chatapp.UI.Fragments.Channel.Channel"
+        android:label="fragment_channel"
+        tools:layout="@layout/fragment_channel" >
+        <action
+            android:id="@+id/action_channel_to_chat"
+            app:destination="@id/chat" />
+        <action
+            android:id="@+id/action_channel_to_logIn"
+            app:destination="@id/logIn" />
+        <action
+            android:id="@+id/action_channel_to_users2"
+            app:destination="@id/users2" />
+        <argument
+            android:name="user"
+            app:argType="com.example.chatapp.Models.ChatUser" />
+    </fragment>
+    <fragment
+        android:id="@+id/chat"
+        android:name="com.example.chatapp.UI.Fragments.Chat.Chat"
+        android:label="fragment_chat"
+        tools:layout="@layout/fragment_chat" >
+        <action
+            android:id="@+id/action_chat_to_channel"
+            app:destination="@id/channel" />
+    </fragment>
+    <fragment
+        android:id="@+id/users2"
+        android:name="com.example.chatapp.UI.Fragments.users.Users"
+        android:label="fragment_users"
+        tools:layout="@layout/fragment_users" >
+        <action
+            android:id="@+id/action_users2_to_chat"
+            app:destination="@id/chat"
+            app:popUpTo="@id/chat" />
+    </fragment>
+
+</navigation>
